@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Tajawal:wght@400;500;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Tajawal", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Cairo", sans-serif;
+
+  --color-brand-bg: #071427;
+  --color-brand-surface: #0B1F3B;
+  --color-brand-primary: #13C6B6;
+  --color-brand-accent: #FFB020;
+  --color-brand-glow: #6AE4FF;
+  --color-brand-text: #EAF2FF;
+  --color-brand-muted: #9BB0D0;
+  --color-brand-border: rgba(255, 255, 255, 0.08);
+
+  --radius-brand: 20px;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    direction: rtl;
+  }
+  body {
+    @apply bg-brand-bg text-brand-text font-sans selection:bg-brand-primary/30;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+  }
+}
+
+@layer utilities {
+  .glass {
+    @apply bg-brand-surface/40 backdrop-blur-xl border border-brand-border;
+  }
+  .glow-primary {
+    @apply shadow-[0_0_20px_rgba(19,198,182,0.3)];
+  }
+  .text-glow {
+    @apply drop-shadow-[0_0_8px_rgba(106,228,255,0.5)];
+  }
+}
