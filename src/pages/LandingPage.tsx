@@ -146,45 +146,57 @@ export default function LandingPage({ onOpenModal }: { onOpenModal: () => void }
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1 }}
-            className="relative h-[600px] hidden lg:block"
+            className="relative h-[400px] lg:h-[600px] hidden lg:block"
           >
             <div className="absolute inset-0 bg-gradient-to-br from-brand-primary/20 to-transparent rounded-[64px] blur-3xl -z-10" />
-            <Suspense fallback={<SkeletonHero />}>
-              <ThreeHero />
-            </Suspense>
-            
-            {/* Floating UI Elements */}
-            <motion.div 
-              animate={{ y: [0, -20, 0] }}
-              transition={{ duration: 4, repeat: Infinity }}
-              className="absolute top-12 right-12 glass p-4 rounded-2xl border-brand-primary/30 z-20"
-            >
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-brand-primary/20 rounded-xl flex items-center justify-center">
-                  <ShoppingBag className="text-brand-primary" size={20} />
+            <div className="w-full h-full glass rounded-[64px] overflow-hidden border-brand-border/50 relative group">
+              <img 
+                src="/assets/mahallk-hero.png" 
+                alt="السوق المصغر — توضيح لمنصة تسوق محلية تعرض التسوق والتاجر عبر واجهات رقمية"
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                width="1200"
+                height="800"
+                loading="eager"
+                decoding="async"
+                onError={(e) => {
+                  (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1557821552-17105176677c?auto=format&fit=crop&q=80&w=1000';
+                }}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-brand-bg via-transparent to-transparent opacity-60" />
+              
+              {/* Floating UI Elements */}
+              <motion.div 
+                animate={{ y: [0, -20, 0] }}
+                transition={{ duration: 4, repeat: Infinity }}
+                className="absolute top-12 right-12 glass p-4 rounded-2xl border-brand-primary/30 z-20"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 bg-brand-primary/20 rounded-xl flex items-center justify-center">
+                    <ShoppingBag className="text-brand-primary" size={20} />
+                  </div>
+                  <div>
+                    <div className="text-xs text-brand-muted">New Order</div>
+                    <div className="text-sm font-bold">EGP 450.00</div>
+                  </div>
                 </div>
-                <div>
-                  <div className="text-xs text-brand-muted">New Order</div>
-                  <div className="text-sm font-bold">EGP 450.00</div>
-                </div>
-              </div>
-            </motion.div>
+              </motion.div>
 
-            <motion.div 
-              animate={{ y: [0, 20, 0] }}
-              transition={{ duration: 5, repeat: Infinity, delay: 1 }}
-              className="absolute bottom-12 left-12 glass p-4 rounded-2xl border-brand-accent/30 z-20"
-            >
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-brand-accent/20 rounded-xl flex items-center justify-center">
-                  <Truck className="text-brand-accent" size={20} />
+              <motion.div 
+                animate={{ y: [0, 20, 0] }}
+                transition={{ duration: 5, repeat: Infinity, delay: 1 }}
+                className="absolute bottom-12 left-12 glass p-4 rounded-2xl border-brand-accent/30 z-20"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 bg-brand-accent/20 rounded-xl flex items-center justify-center">
+                    <Truck className="text-brand-accent" size={20} />
+                  </div>
+                  <div>
+                    <div className="text-xs text-brand-muted">Delivery Status</div>
+                    <div className="text-sm font-bold">On the way</div>
+                  </div>
                 </div>
-                <div>
-                  <div className="text-xs text-brand-muted">Delivery Status</div>
-                  <div className="text-sm font-bold">On the way</div>
-                </div>
-              </div>
-            </motion.div>
+              </motion.div>
+            </div>
           </motion.div>
         </div>
         
